@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 AUTHOR = u'William Mak'
 SITENAME = u':(){:|:&};:'
-SITEURL = 'http://wmak.github.io/wmak.io/'
+SITEURL = 'http://wmak.io'
 
 TIMEZONE = 'Europe/Paris'
 
@@ -26,7 +26,7 @@ DEFAULT_PAGINATION = 10
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
 
-THEME = "/home/wmak/development/pelicanthemes/basic"
+THEME = "/home/wmak/development/pelicanthemes/subtle"
 
 STATIC_PATHS = ['images', 'extra/CNAME']
 EXTRA_PATH_METADATA = {'extra/CNAME': {'path': 'CNAME'},}
