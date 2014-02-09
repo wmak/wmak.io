@@ -19,14 +19,14 @@ TRANSLATION_FEED_ATOM = None
 
 # Social widget
 SOCIAL = (('github', 'https://github.com/wmak'),
-          ('google+', 'https://plus.google.com/u/0/107326857694316235557/posts'),)
+          ('google', 'https://plus.google.com/u/0/107326857694316235557/posts'),)
 
 DEFAULT_PAGINATION = 10
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
 
-THEME = "/home/wmak/development/pelicanthemes/subtle"
+THEME = "./subtle"
 
 STATIC_PATHS = ['images', 'extra/CNAME']
 EXTRA_PATH_METADATA = {'extra/CNAME': {'path': 'CNAME'},}
