@@ -18,8 +18,11 @@ TRANSLATION_FEED_ATOM = None
 # Blogroll
 
 # Social widget
-SOCIAL = (('github', 'https://github.com/wmak'),
-          ('google', 'https://plus.google.com/u/0/107326857694316235557/posts'),)
+SOCIAL = (
+        ('github', 'https://github.com/wmak'),
+        ('google', 'https://plus.google.com/u/0/107326857694316235557/posts'),
+        ('resume', SITEURL + '/content/resume.pdf'),
+        )
 
 DEFAULT_PAGINATION = 10
 
@@ -28,5 +31,5 @@ DEFAULT_PAGINATION = 10
 
 THEME = "./subtle"
 
-STATIC_PATHS = ['images', 'extra/CNAME']
+STATIC_PATHS = ['images', 'extra/CNAME', 'content']
 EXTRA_PATH_METADATA = {'extra/CNAME': {'path': 'CNAME'},}
