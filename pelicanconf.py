@@ -21,6 +21,7 @@ TRANSLATION_FEED_ATOM = None
 SOCIAL = (
         ('github', 'https://github.com/wmak'),
         ('google', 'https://plus.google.com/u/0/107326857694316235557/posts'),
+        ('LinkedIn', 'http://www.linkedin.com/pub/william-mak/66/b1b/a52'),
         ('resume', SITEURL + '/content/resume.pdf'),
         )
 
