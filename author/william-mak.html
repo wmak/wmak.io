@@ -24,6 +24,7 @@
                 <nav><ul>
                     <li ><a href="http://wmak.io/category/dotfiles.html">Dotfiles</a></li>
                     <li ><a href="http://wmak.io/category/general.html">General</a></li>
+                    <li ><a href="http://wmak.io/category/hermes.html">Hermes</a></li>
                     <li ><a href="http://wmak.io/category/programming.html">Programming</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
@@ -32,7 +33,79 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://wmak.io/configuring-xmonad.html">Configuring Xmonad</a></h1> 
+                    <h1 class="entry-title"><a href="http://wmak.io/erasure-code.html">Erasure Code</a></h1> 
+<footer class="post-info">
+        <abbr class="published" title="2014-02-14T17:52:00">
+                Fri 14 February 2014
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://wmak.io/author/william-mak.html">William Mak</a>
+        </address>
+<p>In <a href="http://wmak.io/category/hermes.html">Hermes</a>. </p>
+</footer><!-- /.post-info --><h1>Forard Error Correction</h1>
+<p>To first understand Erasure Code, one must first understand <a href="http://en.wikipedia.org/wiki/Forward_error_correction">Forward Error
+Correction</a> code, which
+erasure code is a type of. Forward Error Correction is commonly used to solve 
+the issue of repairing data lost in a network transfer. This is done by sending 
+a file with additional redundancy. A very simplistic example of Forward Error 
+Correction is to send each bit of data three times and choose the most common 
+occurrence of what is received aka "democratic voting" or "majority vote". For
+example if the source bit was <strong>1</strong>, and after being sent an error occurred it 
+could end up as <strong>0</strong>. <strong>But</strong> with Democratic voting if the bit is sent three 
+times then it would require it to fail at least twice in order for the receiver
+to interpret the data incorrectly. Though simple to implement, this type of
+Forward Error Correction is relatively... very terrible since this
+implementation would take triple the bandwidth and only really allows the signal
+to fail once. </p>
+<h1>Erasure Code</h1>
+<p>Erasure code which is a type of FEC can take a message and encode it in such a
+way so that the original message can be decoded even if parts of the message are
+lost in transmission. Erasure code does this by treating the original message as
+a set of k symbols. It then extends these symbols to a longer set of symbols n,
+these are then the symbols transmitted. Which so long as k` of the symbols are
+transmitted the original set of k symbols can be reconstructed. A great
+example of this is Polynomial Oversampling. If I wanted to transmit the symbols
+'1020' I would do the following:</p>
+<ol>
+<li>Split the message into two parts ["10", "20"]</li>
+<li>Extend the the message by <a href="http://en.wikipedia.org/wiki/Polynomial_interpolation">interpolating the
+function</a> so 
+now the message might be something like ["10", "20", "30", "40"]</li>
+<li>transmit the message as something like "1=10", "2=20", "3=30", "4=40"</li>
+</ol>
+<p>Now on the receiving end</p>
+<ol>
+<li>If the receiving side only receives 2 of the messages ie ["2=20", "4=40"]
+these values too can be interpolated (ie f(i) = 10i)</li>
+<li>using the resulting function the first two values can then be recalculated
+so f(1)=10 and f(2)=20</li>
+<li>now the original message can be reformed by joining the two values "1020"</li>
+</ol>
+<p>Now erasure codes come in varying degrees of efficiency, normally measured as 
+k/n known as the code rate since the smaller this number is the less extra data 
+needs to be transmitted. So with the Polynomial Overampling example above since
+twice the number of symbols were generated it would have a rate of 1/2. </p>
+<p>There is also this other type or erasure known are rateless erasure codes of
+fountain codes which has been covered
+<a href="http://mattolan.com/blog/the-basics-of-fountain-rateless-code.html">here</a> quite
+well and which I will go over in a future porst at some time along with the Go
+implementation of it that is being put in place for the
+<a href="https://github.com/olanmatt/hermes">Hermes</a> project.</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+        
+
+ 
+            <li><article class="hentry">    
+                <header>
+                        <h1><a href="http://wmak.io/configuring-xmonad.html" rel="bookmark" title="Permalink to Configuring Xmonad">Configuring Xmonad</a></h1>
+                </header>
+                
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2014-02-09T15:55:00">
                 Sun 09 February 2014
@@ -42,16 +115,10 @@
                 By <a class="url fn" href="http://wmak.io/author/william-mak.html">William Mak</a>
         </address>
 <p>In <a href="http://wmak.io/category/dotfiles.html">Dotfiles</a>. </p>
-</footer><!-- /.post-info --><p>So after having a bunch of wireless issues and poorly installing wicd on Linux mint I've decided to revisit using arch linux. I then spent a day fumbling around in arch until I finally had it running with <a href="http://xmonad.org/">xmonad</a> and <a href="http://projects.haskell.org/xmobar/">xmobar</a>. I've also posted my dotfiles on <a href="https://github.com/wmak/dotfiles">github</a> if anyone else wants to configure their setup with them as well. Just note that I've added some keybindings for colemak but I think most of the qwerty bindings are still there.</p>
-<h1>xmobar</h1>
-<p>Having xmonad and xmobar start together actually took a long time to set up. Originally I had xmonad run xmobar itself as per the <a href="https://wiki.archlinux.org/index.php/Xmonad#Using_xmobar_with_xmonad">arch wiki</a>. Which had xinitrc only need to run <code>exec xmonad</code>, but because of a <a href="http://www.haskell.org/haskellwiki/Xmonad/Frequently_asked_questions#XMonad_is_frozen.21">bug</a> in xmonad if you change windows... or watch a video... or just use xmonad it will freeze up and become completely unusable. So instead I configured xmonad to leave a gap at the top of the screen and had xmobar run seperately. At first I tried having xinitrc do <code>exec xmonad | xmobar</code> which seemed to work perfectly until I had to quit, at which point xmonad would completely freeze up and become unresponsive. In the end I figured I could run xmobar seperately in the background so the final xinitrc runs <code>xmobar &amp;</code> right before executing xmonad</p>
-<h1>xmonad</h1>
-<p>Currently xmonad isn't configured all too much most of the default configs are perfect for me, but I set up the colours from a them I found on <a href="https://kuler.adobe.com/Vintage-Color-color-theme-3369015/edit/?copy=true&amp;base=2&amp;rule=Custom&amp;selected=0&amp;name=Copy%20of%20Vintage%20Color&amp;mode=hsv&amp;rgbvalues=0.9411764705882353,0.2980392156862745,0.08627450980392157,0.8588235294117647,0.8588235294117647,0.8156862745098039,0.9294117647058824,0.7411764705882353,0.12156862745098039,0.2980392156862745,0.6901960784313725,0.611764705882353,0.19215686274509805,0.23137254901960785,0.2901960784313726&amp;swatchOrder=0,1,2,3,4_">kuler</a>, modified the layout to fit xmobar, and added some custom keyboard shortcuts.</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+</footer><!-- /.post-info -->                <p>Going over how I've set up xmonad</p>
+                <a class="readmore" href="http://wmak.io/configuring-xmonad.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
         
 
  
