@@ -4,7 +4,7 @@ Category: Hermes
 Author: William Mak
 Summary: Wnat is Erasure code? Why are we using it for Hermes?
 
-# Forard Error Correction
+# Forward Error Correction
 To first understand Erasure Code, one must first understand [Forward Error
 Correction](http://en.wikipedia.org/wiki/Forward_error_correction) code, which
 erasure code is a type of. Forward Error Correction is commonly used to solve 

@@ -4,7 +4,8 @@ from __future__ import unicode_literals
 
 AUTHOR = u'William Mak'
 SITENAME = u':(){:|:&};:'
-SITEURL = 'http://wmak.io'
+#SITEURL = 'http://wmak.io'
+SITEURL = ''
 
 TIMEZONE = 'Europe/Paris'
 
@@ -30,7 +31,7 @@ DEFAULT_PAGINATION = 10
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
 
-THEME = "./subtle"
+THEME = "./theme"
 
 STATIC_PATHS = ['images', 'extra/CNAME', 'content']
 EXTRA_PATH_METADATA = {'extra/CNAME': {'path': 'CNAME'},}
