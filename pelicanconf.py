@@ -28,6 +28,8 @@ SOCIAL = (
 
 DEFAULT_PAGINATION = 10
 
+GOOGLE_ANALYTICS = "UA-48091655-1"
+
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
 
