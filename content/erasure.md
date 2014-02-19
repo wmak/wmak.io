@@ -53,6 +53,6 @@ twice the number of symbols were generated it would have a rate of 1/2.
 There is also this other type or erasure known are rateless erasure codes of
 fountain codes which has been covered
 [here](http://mattolan.com/blog/the-basics-of-fountain-rateless-code.html) quite
-well and which I will go over in a future porst at some time along with the Go
+well and which I will go over in a future post at some time along with the Go
 implementation of it that is being put in place for the
 [Hermes](https://github.com/olanmatt/hermes) project.
