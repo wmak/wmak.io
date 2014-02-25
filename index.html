@@ -56,8 +56,8 @@
 
     <div class='article'>
         <div class="content-title">
-            <a href="/erasure-code.html"><h1>Erasure Code</h1></a>
-Fri 14 February 2014
+            <a href="/iris.html"><h1>Iris</h1></a>
+Mon 24 February 2014
 
 by <a class="url fn" href="/author/william-mak.html">William Mak</a>
  
@@ -66,58 +66,52 @@ by <a class="url fn" href="/author/william-mak.html">William Mak</a>
  
         </div>
         
-        <div><h1>Forward Error Correction</h1>
-<p>To first understand Erasure Code, one must first understand <a href="http://en.wikipedia.org/wiki/Forward_error_correction">Forward Error
-Correction</a> code, which
-erasure code is a type of. Forward Error Correction is commonly used to solve 
-the issue of repairing data lost in a network transfer. This is done by sending 
-a file with additional redundancy. A very simplistic example of Forward Error 
-Correction is to send each bit of data three times and choose the most common 
-occurrence of what is received aka "democratic voting" or "majority vote". For
-example if the source bit was <strong>1</strong>, and after being sent an error occurred it 
-could end up as <strong>0</strong>. <strong>But</strong> with Democratic voting if the bit is sent three 
-times then it would require it to fail at least twice in order for the receiver
-to interpret the data incorrectly. Though simple to implement, this type of
-Forward Error Correction is relatively... very terrible since this
-implementation would take triple the bandwidth and only really allows the signal
-to fail once. </p>
-<h1>Erasure Code</h1>
-<p>Erasure code which is a type of FEC can take a message and encode it in such a
-way so that the original message can be decoded even if parts of the message are
-lost in transmission. Erasure code does this by treating the original message as
-a set of k symbols. It then extends these symbols to a longer set of symbols n,
-these are then the symbols transmitted. Which so long as k` of the symbols are
-transmitted the original set of k symbols can be reconstructed. A great
-example of this is Polynomial Oversampling. If I wanted to transmit the symbols
-'1020' I would do the following:</p>
-<ol>
-<li>Split the message into two parts ["10", "20"]</li>
-<li>Extend the the message by <a href="http://en.wikipedia.org/wiki/Polynomial_interpolation">interpolating the
-function</a> so 
-now the message might be something like ["10", "20", "30", "40"]</li>
-<li>transmit the message as something like "1=10", "2=20", "3=30", "4=40"</li>
-</ol>
-<p>Now on the receiving end</p>
-<ol>
-<li>If the receiving side only receives 2 of the messages ie ["2=20", "4=40"]
-these values too can be interpolated (ie f(i) = 10i)</li>
-<li>using the resulting function the first two values can then be recalculated
-so f(1)=10 and f(2)=20</li>
-<li>now the original message can be reformed by joining the two values "1020"</li>
-</ol>
-<p>Now erasure codes come in varying degrees of efficiency, normally measured as 
-k/n known as the code rate since the smaller this number is the less extra data 
-needs to be transmitted. So with the Polynomial Overampling example above since
-twice the number of symbols were generated it would have a rate of 1/2. </p>
-<p>There is also this other type or erasure known are rateless erasure codes of
-fountain codes which has been covered
-<a href="http://mattolan.com/blog/the-basics-of-fountain-rateless-code.html">here</a> quite
-well and which I will go over in a future post at some time along with the Go
-implementation of it that is being put in place for the
-<a href="https://github.com/olanmatt/hermes">Hermes</a> project.</p></div>
+        <div><p><a href="https://github.com/IrisConstruct/iris">Iris</a> is an image analysis program that
+given a manifest file, and a set of images will return the relative positions of
+each capturing camera from one another. For example the follwowin two images
+were taken by two phones beside each other. This one on the left: <img alt="left
+image" src="https://github.com/IrisConstruct/iris/blob/master/src/img/a.jpg?raw=true" />
+and this one on the right: <img alt="right
+image" src="https://github.com/IrisConstruct/iris/blob/master/src/img/b.jpg?raw=true" /></p>
+<p>So how do i find which picture is which? Well they are very close to one another
+so I then used this to my advantage to use opencv to find
+the matching landmarks between the two images. It then returns the following
+image. <img alt="comparisons" src="http://wmak.io/images/iris.jpg" /> </p>
+<p>Now that I have found the matching points in the two images I can find there
+distances from the left side of the image. This then tells me there relative
+positions. This is because the left camera will see the same landmarks further 
+to the left and the right camera will see the landmarks further to the right.
+This seems anti intuitive especially if you try moving your head left and right
+while staring at an object you will see that on the left the object will appear
+furhter to the right. The reason the code is the other way around is that images
+are mirrored by the front camera phones.</p>
+<p>So there we have it, at the code will return a "matrix" of scores that are then
+used by the backend code to crop and position an image or video:
+<code>{'scrs': [{'ip2': u'192.168.0.5', 'ip1': u'192.168.0.5', 'score': 0.0}, {'ip2':
+u'192.168.0.6', 'ip1': u'192.168.0.5', 'score': 65.76188568516939}, {'ip2':
+u'192.168.0.5', 'ip1': u'192.168.0.6', 'score': -17.09808192707039}, {'ip2':
+u'192.168.0.6', 'ip1': u'192.168.0.6', 'score': 241.95999999999995}]}</code></p></div>
         <hr />
     </div>
 		
+
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="/erasure-code.html"><h2>Erasure Code</h2></a>
+        <div class= "well small"> Fri 14 February 2014
+
+by <a class="url fn" href="/author/william-mak.html">William Mak</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>Wnat is Erasure code? Why are we using it for Hermes?</p> <a class="btn btn-info xsmall" href="/erasure-code.html">read more</a></div>
+    </div>	
+				
 
  
         
@@ -170,24 +164,6 @@ by <a class="url fn" href="/author/william-mak.html">William Mak</a>
 
  </div>
         <div class="summary"><p>Finally got around to setting a site up, will hopefully have content up here soon.</p> <a class="btn btn-info xsmall" href="/first.html">read more</a></div>
-    </div>	
-				
-
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="/iris.html"><h2>Iris</h2></a>
-        <div class= "well small"> Fri 31 January 2014
-
-by <a class="url fn" href="/author/william-mak.html">William Mak</a>
- 
-
-
- </div>
-        <div class="summary"><p>A quick overview of how the image analysis for Iris works</p> <a class="btn btn-info xsmall" href="/iris.html">read more</a></div>
     </div>	
 				
 <div class="pagination">
