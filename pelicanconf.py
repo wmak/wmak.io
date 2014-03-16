@@ -35,5 +35,5 @@ GOOGLE_ANALYTICS = "UA-48091655-1"
 
 THEME = "./theme"
 
-STATIC_PATHS = ['images', 'extra/CNAME', 'content']
+STATIC_PATHS = ['images', 'extra/CNAME', 'content', 'selenate.html']
 EXTRA_PATH_METADATA = {'extra/CNAME': {'path': 'CNAME'},}
