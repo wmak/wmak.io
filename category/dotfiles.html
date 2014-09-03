@@ -51,8 +51,8 @@
 
     <div class='article'>
         <div class="content-title">
-            <a href="/adding-ping-to-xmobar.html"><h1>Adding ping to xmobar</h1></a>
-Sun 15 June 2014
+            <a href="/configuring-xmonad.html"><h1>Configuring Xmonad</h1></a>
+Sun 09 February 2014
 
 by <a class="url fn" href="/author/william-mak.html">William Mak</a>
  
@@ -61,69 +61,14 @@ by <a class="url fn" href="/author/william-mak.html">William Mak</a>
  
         </div>
         
-        <div><h1>Pinger</h1>
-<p>First off I wrote a small little script that returns the output of pinging
-google in a format that xmobar is okay with you can find that in my dotfiles
-<a href="https://github.com/wmak/dotfiles">here</a> the file is called pinger.</p>
-<p>So how does this script work? The first line takes the output of pinging google
-10 times and finds out the average Round-trip delay time(RTT) of each ping. The
-line itself may be a bit confusing: <code>ping -c 10 google.com | grep rtt | grep
--o '[0-9]\+\.[0-9]\+' | sed -n 2p</code></p>
-<ul>
-<li>The first command <code>ping -c 10 google.com</code> simply tells <code>ping</code> to send 10 packets
-  and to send these to google.com.</li>
-<li>The second command <code>grep rtt</code> greps the output of ping and finds any lines
-  with rtt, since we know the output or ping is almost always the same this
-  finds the very last line, the one with the average ping time</li>
-<li>The third command <code>grep -o '[0-9]\+\.[0-9]\+</code> greps the output from the second
-  command and only returns the matching parts of the line(this is because of the
-  -o option). The <code>'[0-9]\+\.[0-9]\+</code> part of this command is a regex to find
-  a number with decimal points.</li>
-<li>The very last command returns the second line of output, this is because the
-  previous grep returns each match on a seperate line and we know that there
-  should be 4 matching numbers; minimum, average, maximum and standard deviation
-  since we only care about average we get the second match</li>
-</ul>
-<p>All this gives us a single number, the average rtt of the pings. Now at this
-point we check that there actually is an output. If there is no connection at
-all then ping will not return the output we're expecting. So the result of the
-above command will be nothing. at which case we show that ping takes "infinite"
-time. otherwise we convert it to an int so we can do comparisons and echo a
-colored output according to how high or low the ping is. Here we use the fc tag 
-(font colour?) and give the output a color depending on its size (ie we set a
-ping lower than 100 to green).</p>
-<h1>Using this script in xmobar</h1>
-<p>Going back to my dotfiles and navigating to xmobarrc you will find how this
-command is ran.</p>
-<p>First under the list of commands I add a new item: <code>Run Com "/home/wmak/.pinger"</code> 
-what this does is tell xmobar you are running an external command, and that the
-command is /home/wmak/.pinger. Afterwhich 3 arguments are passed a list of args
-for .pinger (nothing), the name of the command for the template (ping) and how
-often to run this script (every 30 seconds). so for example if one wanted to run
-pinger every 45 seconds and call it bob instead of how I have it you would do
-this:</p>
-<p><code>Run Com "/home/wmak/.pinger" [] "bob" 45</code></p></div>
+        <div><p>So after having a bunch of wireless issues and poorly installing wicd on Linux mint I've decided to revisit using arch linux. I then spent a day fumbling around in arch until I finally had it running with <a href="http://xmonad.org/">xmonad</a> and <a href="http://projects.haskell.org/xmobar/">xmobar</a>. I've also posted my dotfiles on <a href="https://github.com/wmak/dotfiles">github</a> if anyone else wants to configure their setup with them as well. Just note that I've added some keybindings for colemak but I think most of the qwerty bindings are still there.</p>
+<h1>xmobar</h1>
+<p>Having xmonad and xmobar start together actually took a long time to set up. Originally I had xmonad run xmobar itself as per the <a href="https://wiki.archlinux.org/index.php/Xmonad#Using_xmobar_with_xmonad">arch wiki</a>. Which had xinitrc only need to run <code>exec xmonad</code>, but because of a <a href="http://www.haskell.org/haskellwiki/Xmonad/Frequently_asked_questions#XMonad_is_frozen.21">bug</a> in xmonad if you change windows... or watch a video... or just use xmonad it will freeze up and become completely unusable. So instead I configured xmonad to leave a gap at the top of the screen and had xmobar run seperately. At first I tried having xinitrc do <code>exec xmonad | xmobar</code> which seemed to work perfectly until I had to quit, at which point xmonad would completely freeze up and become unresponsive. In the end I figured I could run xmobar seperately in the background so the final xinitrc runs <code>xmobar &amp;</code> right before executing xmonad</p>
+<h1>xmonad</h1>
+<p>Currently xmonad isn't configured all too much most of the default configs are perfect for me, but I set up the colours from a them I found on <a href="https://kuler.adobe.com/Vintage-Color-color-theme-3369015/edit/?copy=true&amp;base=2&amp;rule=Custom&amp;selected=0&amp;name=Copy%20of%20Vintage%20Color&amp;mode=hsv&amp;rgbvalues=0.9411764705882353,0.2980392156862745,0.08627450980392157,0.8588235294117647,0.8588235294117647,0.8156862745098039,0.9294117647058824,0.7411764705882353,0.12156862745098039,0.2980392156862745,0.6901960784313725,0.611764705882353,0.19215686274509805,0.23137254901960785,0.2901960784313726&amp;swatchOrder=0,1,2,3,4_">kuler</a>, modified the layout to fit xmobar, and added some custom keyboard shortcuts.</p></div>
         <hr />
     </div>
 		
-
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="/configuring-xmonad.html"><h2>Configuring Xmonad</h2></a>
-        <div class= "well small"> Sun 09 February 2014
-
-by <a class="url fn" href="/author/william-mak.html">William Mak</a>
- 
-
-
- </div>
-        <div class="summary"><p>Going over how I've set up xmonad</p> <a class="btn btn-info xsmall" href="/configuring-xmonad.html">read more</a></div>
-    </div>	
-				
 <div class="pagination">
 <ul>
     <li class="prev disabled"><a href="#">&larr; Previous</a></li>
