@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>:(){:|::</title><link href="/" rel="alternate"></link><link href="/feeds/william-mak.atom.xml" rel="self"></link><id>/</id><updated>2014-02-24T23:06:00+01:00</updated><entry><title>Iris</title><link href="/iris.html" rel="alternate"></link><updated>2014-02-24T23:06:00+01:00</updated><author><name>William Mak</name></author><id>tag:,2014-02-24:iris.html</id><summary type="html">&lt;p&gt;&lt;a href="https://github.com/IrisConstruct/iris"&gt;Iris&lt;/a&gt; is an image analysis program that
+given a manifest file, and a set of images will return the relative positions of
+each capturing camera from one another. For example the follwowin two images
+were taken by two phones beside each other. This one on the left: &lt;img alt="left
+image" src="https://github.com/IrisConstruct/iris/blob/master/src/img/a.jpg?raw=true" /&gt;
+and this one on the right: &lt;img alt="right
+image" src="https://github.com/IrisConstruct/iris/blob/master/src/img/b.jpg?raw=true" /&gt;&lt;/p&gt;
+&lt;p&gt;So how do i find which picture is which? Well they are very close to one another
+so I then used this to my advantage to use opencv to find
+the matching landmarks between the two images. It then returns the following
+image. &lt;img alt="comparisons" src="http://wmak.io/images/iris.jpg" /&gt; &lt;/p&gt;
+&lt;p&gt;Now that I have found the matching points in the two images I can find there
+distances from the left side of the image. This then tells me there relative
+positions. This is because the left camera will see the same landmarks further 
+to the left and the right camera will see the landmarks further to the right.
+This seems anti intuitive especially if you try moving your head left and right
+while staring at an object you will see that on the left the object will appear
+furhter to the right. The reason the code is the other way around is that images
+are mirrored by the front camera phones.&lt;/p&gt;
+&lt;p&gt;So there we have it, at the code will return a "matrix" of scores that are then
+used by the backend code to crop and position an image or video:
+&lt;code&gt;{'scrs': [{'ip2': u'192.168.0.5', 'ip1': u'192.168.0.5', 'score': 0.0}, {'ip2':
+u'192.168.0.6', 'ip1': u'192.168.0.5', 'score': 65.76188568516939}, {'ip2':
+u'192.168.0.5', 'ip1': u'192.168.0.6', 'score': -17.09808192707039}, {'ip2':
+u'192.168.0.6', 'ip1': u'192.168.0.6', 'score': 241.95999999999995}]}&lt;/code&gt;&lt;/p&gt;</summary></entry><entry><title>Erasure Code</title><link href="/erasure-code.html" rel="alternate"></link><updated>2014-02-14T21:43:00+01:00</updated><author><name>William Mak</name></author><id>tag:,2014-02-14:erasure-code.html</id><summary type="html">&lt;h1&gt;Forward Error Correction&lt;/h1&gt;
+&lt;p&gt;To first understand Erasure Code, one must first understand &lt;a href="http://en.wikipedia.org/wiki/Forward_error_correction"&gt;Forward Error
+Correction&lt;/a&gt; code, which
+erasure code is a type of. Forward Error Correction is commonly used to solve 
+the issue of repairing data lost in a network transfer. This is done by sending 
+a file with additional redundancy. A very simplistic example of Forward Error 
+Correction is to send each bit of data three times and choose the most common 
+occurrence of what is received aka "democratic voting" or "majority vote". For
+example if the source bit was &lt;strong&gt;1&lt;/strong&gt;, and after being sent an error occurred it 
+could end up as &lt;strong&gt;0&lt;/strong&gt;. &lt;strong&gt;But&lt;/strong&gt; with Democratic voting if the bit is sent three 
+times then it would require it to fail at least twice in order for the receiver
+to interpret the data incorrectly. Though simple to implement, this type of
+Forward Error Correction is relatively... very terrible since this
+implementation would take triple the bandwidth and only really allows the signal
+to fail once. &lt;/p&gt;
+&lt;h1&gt;Erasure Code&lt;/h1&gt;
+&lt;p&gt;Erasure code which is a type of FEC can take a message and encode it in such a
+way so that the original message can be decoded even if parts of the message are
+lost in transmission. Erasure code does this by treating the original message as
+a set of k symbols. It then extends these symbols to a longer set of symbols n,
+these are then the symbols transmitted. Which so long as k` of the symbols are
+transmitted the original set of k symbols can be reconstructed. A great
+example of this is Polynomial Oversampling. If I wanted to transmit the symbols
+'1020' I would do the following:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Split the message into two parts ["10", "20"]&lt;/li&gt;
+&lt;li&gt;Extend the the message by &lt;a href="http://en.wikipedia.org/wiki/Polynomial_interpolation"&gt;interpolating the
+function&lt;/a&gt; so 
+now the message might be something like ["10", "20", "30", "40"]&lt;/li&gt;
+&lt;li&gt;transmit the message as something like "1=10", "2=20", "3=30", "4=40"&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Now on the receiving end&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;If the receiving side only receives 2 of the messages ie ["2=20", "4=40"]
+these values too can be interpolated (ie f(i) = 10i)&lt;/li&gt;
+&lt;li&gt;using the resulting function the first two values can then be recalculated
+so f(1)=10 and f(2)=20&lt;/li&gt;
+&lt;li&gt;now the original message can be reformed by joining the two values "1020"&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Now erasure codes come in varying degrees of efficiency, normally measured as 
+k/n known as the code rate since the smaller this number is the less extra data 
+needs to be transmitted. So with the Polynomial Overampling example above since
+twice the number of symbols were generated it would have a rate of 1/2. &lt;/p&gt;
+&lt;p&gt;There is also this other type or erasure known are rateless erasure codes of
+fountain codes which has been covered
+&lt;a href="http://mattolan.com/blog/the-basics-of-fountain-rateless-code.html"&gt;here&lt;/a&gt; quite
+well and which I will go over in a future post at some time along with the Go
+implementation of it that is being put in place for the
+&lt;a href="https://github.com/olanmatt/hermes"&gt;Hermes&lt;/a&gt; project.&lt;/p&gt;</summary></entry><entry><title>Configuring Xmonad</title><link href="/configuring-xmonad.html" rel="alternate"></link><updated>2014-02-09T15:55:00+01:00</updated><author><name>William Mak</name></author><id>tag:,2014-02-09:configuring-xmonad.html</id><summary type="html">&lt;p&gt;So after having a bunch of wireless issues and poorly installing wicd on Linux mint I've decided to revisit using arch linux. I then spent a day fumbling around in arch until I finally had it running with &lt;a href="http://xmonad.org/"&gt;xmonad&lt;/a&gt; and &lt;a href="http://projects.haskell.org/xmobar/"&gt;xmobar&lt;/a&gt;. I've also posted my dotfiles on &lt;a href="https://github.com/wmak/dotfiles"&gt;github&lt;/a&gt; if anyone else wants to configure their setup with them as well. Just note that I've added some keybindings for colemak but I think most of the qwerty bindings are still there.&lt;/p&gt;
+&lt;h1&gt;xmobar&lt;/h1&gt;
+&lt;p&gt;Having xmonad and xmobar start together actually took a long time to set up. Originally I had xmonad run xmobar itself as per the &lt;a href="https://wiki.archlinux.org/index.php/Xmonad#Using_xmobar_with_xmonad"&gt;arch wiki&lt;/a&gt;. Which had xinitrc only need to run &lt;code&gt;exec xmonad&lt;/code&gt;, but because of a &lt;a href="http://www.haskell.org/haskellwiki/Xmonad/Frequently_asked_questions#XMonad_is_frozen.21"&gt;bug&lt;/a&gt; in xmonad if you change windows... or watch a video... or just use xmonad it will freeze up and become completely unusable. So instead I configured xmonad to leave a gap at the top of the screen and had xmobar run seperately. At first I tried having xinitrc do &lt;code&gt;exec xmonad | xmobar&lt;/code&gt; which seemed to work perfectly until I had to quit, at which point xmonad would completely freeze up and become unresponsive. In the end I figured I could run xmobar seperately in the background so the final xinitrc runs &lt;code&gt;xmobar &amp;amp;&lt;/code&gt; right before executing xmonad&lt;/p&gt;
+&lt;h1&gt;xmonad&lt;/h1&gt;
+&lt;p&gt;Currently xmonad isn't configured all too much most of the default configs are perfect for me, but I set up the colours from a them I found on &lt;a href="https://kuler.adobe.com/Vintage-Color-color-theme-3369015/edit/?copy=true&amp;amp;base=2&amp;amp;rule=Custom&amp;amp;selected=0&amp;amp;name=Copy%20of%20Vintage%20Color&amp;amp;mode=hsv&amp;amp;rgbvalues=0.9411764705882353,0.2980392156862745,0.08627450980392157,0.8588235294117647,0.8588235294117647,0.8156862745098039,0.9294117647058824,0.7411764705882353,0.12156862745098039,0.2980392156862745,0.6901960784313725,0.611764705882353,0.19215686274509805,0.23137254901960785,0.2901960784313726&amp;amp;swatchOrder=0,1,2,3,4_"&gt;kuler&lt;/a&gt;, modified the layout to fit xmobar, and added some custom keyboard shortcuts.&lt;/p&gt;</summary></entry><entry><title>Scheme</title><link href="/scheme.html" rel="alternate"></link><updated>2014-02-05T06:43:00+01:00</updated><author><name>William Mak</name></author><id>tag:,2014-02-05:scheme.html</id><summary type="html">&lt;p&gt;Never has there been such a large learning curve in a language for me. Scheme is a completely different paradigm for me, and well in general. my first interaction with an if statement went something like this:&lt;/p&gt;
+&lt;p&gt;(if (empty? lis)
+    (display "empty list")
+    (display "not an empty list")
+)&lt;/p&gt;
+&lt;p&gt;WHAT?! why is there two statements inside of the if, why isn't there an else statement?. I was generally confused. Of course though after enough programming exercises it clicked. Everything is written as lists of one another. So instead of the syntax I was used to, where there needed to be an else statement, a function is passed as an argument to if as else instead.&lt;/p&gt;</summary></entry><entry><title>First!</title><link href="/first.html" rel="alternate"></link><updated>2014-01-31T02:58:00+01:00</updated><author><name>William Mak</name></author><id>tag:,2014-01-31:first.html</id><summary type="html">&lt;p&gt;)= no content yet&lt;/p&gt;</summary></entry></feed>
