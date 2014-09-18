@@ -1,245 +1,187 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+>
 <head>
-    <meta charset="utf-8">
     <title>:(){:|:&};:</title>
-    <meta name="description" content="">
-    <meta name="author" content="William Mak">
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-    <script src="/theme/html5.js"></script>
-    <![endif]-->
+
+
+<link rel="canonical" href="">
+        <meta name="author" content="William Mak" />
+
+    <!-- Open Graph tags -->
+        <meta property="og:site_name" content=":(){:|:&};:" />
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content=":(){:|:&};:"/>
+        <meta property="og:url" content=""/>
+        <meta property="og:description" content=":(){:|:&};:"/>
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
 
 
 </head>
-
 <body>
 
-<div class="navbar">
-    <div class="navbar-inner">
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
-
-         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-         </a>
-
-        <a class="brand" href="">:(){:|:&};:</a>
-
-        <div class="nav-collapse">
-        <ul class="nav">
-            
-        </ul>
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+:(){:|:&};:            </a>
         </div>
-        
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                        <li >
+                            <a href="/category/dotfiles.html">Dotfiles</a>
+                        </li>
+                        <li >
+                            <a href="/category/general.html">General</a>
+                        </li>
+                        <li >
+                            <a href="/category/hermes.html">Hermes</a>
+                        </li>
+                        <li >
+                            <a href="/category/iris.html">Iris</a>
+                        </li>
+                        <li >
+                            <a href="/category/programming.html">Programming</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
     </div>
-    </div>
-</div>
+</div> <!-- /.navbar -->
 
 <div class="container">
-    <div class="content">
     <div class="row">
+        <div class="col-sm-9">
 
-        <div class="span9">
-        
+            <article>
+                <h2><a href="/talon.html">Talon</a></h2>
+                <div class="summary"><p>What the hell is Talon and what does it do?</p>
+                    <a class="btn btn-default btn-xs" href="/talon.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/iris.html">Iris</a></h2>
+                <div class="summary"><p>A quick overview of how the image analysis for Iris works</p>
+                    <a class="btn btn-default btn-xs" href="/iris.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/erasure-code.html">Erasure Code</a></h2>
+                <div class="summary"><p>Wnat is Erasure code? Why are we using it for Hermes?</p>
+                    <a class="btn btn-default btn-xs" href="/erasure-code.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/configuring-xmonad.html">Configuring Xmonad</a></h2>
+                <div class="summary"><p>Going over how I've set up xmonad</p>
+                    <a class="btn btn-default btn-xs" href="/configuring-xmonad.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/scheme.html">Scheme</a></h2>
+                <div class="summary"><p>First impressions of scheme</p>
+                    <a class="btn btn-default btn-xs" href="/scheme.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/first.html">First!</a></h2>
+                <div class="summary"><p>Finally got around to setting a site up, will hopefully have content up here soon.</p>
+                    <a class="btn btn-default btn-xs" href="/first.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
 
-        
-
-
-    <div class='article'>
-        <div class="content-title">
-            <a href="/iris.html"><h1>Iris</h1></a>
-Mon 24 February 2014
-
-by <a class="url fn" href="/author/william-mak.html">William Mak</a>
- 
-
-
- 
         </div>
-        
-        <div><p><a href="https://github.com/IrisConstruct/iris">Iris</a> is an image analysis program that
-given a manifest file, and a set of images will return the relative positions of
-each capturing camera from one another. For example the follwowin two images
-were taken by two phones beside each other. This one on the left: <img alt="left
-image" src="https://github.com/IrisConstruct/iris/blob/master/src/img/a.jpg?raw=true" />
-and this one on the right: <img alt="right
-image" src="https://github.com/IrisConstruct/iris/blob/master/src/img/b.jpg?raw=true" /></p>
-<p>So how do i find which picture is which? Well they are very close to one another
-so I then used this to my advantage to use opencv to find
-the matching landmarks between the two images. It then returns the following
-image. <img alt="comparisons" src="http://wmak.io/images/iris.jpg" /> </p>
-<p>Now that I have found the matching points in the two images I can find there
-distances from the left side of the image. This then tells me there relative
-positions. This is because the left camera will see the same landmarks further 
-to the left and the right camera will see the landmarks further to the right.
-This seems anti intuitive especially if you try moving your head left and right
-while staring at an object you will see that on the left the object will appear
-furhter to the right. The reason the code is the other way around is that images
-are mirrored by the front camera phones.</p>
-<p>So there we have it, at the code will return a "matrix" of scores that are then
-used by the backend code to crop and position an image or video:
-<code>{'scrs': [{'ip2': u'192.168.0.5', 'ip1': u'192.168.0.5', 'score': 0.0}, {'ip2':
-u'192.168.0.6', 'ip1': u'192.168.0.5', 'score': 65.76188568516939}, {'ip2':
-u'192.168.0.5', 'ip1': u'192.168.0.6', 'score': -17.09808192707039}, {'ip2':
-u'192.168.0.6', 'ip1': u'192.168.0.6', 'score': 241.95999999999995}]}</code></p></div>
-        <hr />
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+                <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+                  <ul class="list-group" id="social">
+                    <li class="list-group-item"><a href="https://github.com/wmak"><i class="fa fa-github-square fa-lg"></i> github</a></li>
+                    <li class="list-group-item"><a href="https://plus.google.com/u/0/+WilliamMak"><i class="fa fa-google-square fa-lg"></i> google</a></li>
+                    <li class="list-group-item"><a href="http://www.linkedin.com/pub/william-mak/66/b1b/a52"><i class="fa fa-linkedin-square fa-lg"></i> LinkedIn</a></li>
+                    <li class="list-group-item"><a href="/content/resume.pdf"><i class="fa fa-resume-square fa-lg"></i> resume</a></li>
+                    <li class="list-group-item"><a href="talon.html"><i class="fa fa-talon-square fa-lg"></i> talon</a></li>
+                  </ul>
+                </li>
+
+
+
+                <li class="list-group-item"><a href="/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group " id="tags">
+                    </ul>
+                </li>    
+
+        </ul>
+    </section>
+
+</aside>        </div>
     </div>
-		
-
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="/erasure-code.html"><h2>Erasure Code</h2></a>
-        <div class= "well small"> Fri 14 February 2014
-
-by <a class="url fn" href="/author/william-mak.html">William Mak</a>
- 
-
-
- </div>
-        <div class="summary"><p>Wnat is Erasure code? Why are we using it for Hermes?</p> <a class="btn btn-info xsmall" href="/erasure-code.html">read more</a></div>
-    </div>	
-				
-
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="/configuring-xmonad.html"><h2>Configuring Xmonad</h2></a>
-        <div class= "well small"> Sun 09 February 2014
-
-by <a class="url fn" href="/author/william-mak.html">William Mak</a>
- 
-
-
- </div>
-        <div class="summary"><p>Going over how I've set up xmonad</p> <a class="btn btn-info xsmall" href="/configuring-xmonad.html">read more</a></div>
-    </div>	
-				
-
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="/scheme.html"><h2>Scheme</h2></a>
-        <div class= "well small"> Wed 05 February 2014
-
-by <a class="url fn" href="/author/william-mak.html">William Mak</a>
- 
-
-
- </div>
-        <div class="summary"><p>First impressions of scheme</p> <a class="btn btn-info xsmall" href="/scheme.html">read more</a></div>
-    </div>	
-				
-
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="/first.html"><h2>First!</h2></a>
-        <div class= "well small"> Fri 31 January 2014
-
-by <a class="url fn" href="/author/william-mak.html">William Mak</a>
- 
-
-
- </div>
-        <div class="summary"><p>Finally got around to setting a site up, will hopefully have content up here soon.</p> <a class="btn btn-info xsmall" href="/first.html">read more</a></div>
-    </div>	
-				
-<div class="pagination">
-<ul>
-    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
-
-    <li class="active"><a href="/index.html">1</a></li>
-
-    <li class="next disabled"><a href="#">&rarr; Next</a></li>
-
-</ul>
 </div>
- 
-  
-        </div>
-        
-        <div class="span3">
-
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Site
-                </li>
-            
-                <li><a href="/">Archives</a>
-                <li><a href="/tags.html">Tags</a>
-                <li><a href="/" rel="alternate">Atom feed</a></li>
-            </ul>
-            </div>
-
-
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Categories
-                </li>
-                
-                <li><a href="/category/dotfiles.html">Dotfiles</a></li>
-                <li><a href="/category/general.html">General</a></li>
-                <li><a href="/category/hermes.html">Hermes</a></li>
-                <li><a href="/category/iris.html">Iris</a></li>
-                <li><a href="/category/programming.html">Programming</a></li>
-                   
-            </ul>
-            </div>
-
-
-
-
-            <div class="social">
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Social
-                </li>
-           
-                <li><a href="https://github.com/wmak">github</a></li>
-                <li><a href="https://plus.google.com/u/0/+WilliamMak">google</a></li>
-                <li><a href="http://www.linkedin.com/pub/william-mak/66/b1b/a52">LinkedIn</a></li>
-                <li><a href="/content/resume.pdf">resume</a></li>
-                <li><a href="talon.html">talon</a></li>
-            </ul>
-            </div>
-            </div>
-
-        </div>  
-    </div>     </div> 
 <footer>
-<br />
-<p><a href="">:(){:|:&};:</a> &copy; William Mak 2012</p>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2014 William Mak
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
 </footer>
+<script src="/theme/js/jquery.min.js"></script>
 
-</div> <!-- /container -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-<!-- Le styles -->
-<link href="/theme/bootstrap.min.css" rel="stylesheet">
-<link href="/theme/bootstrap.min.responsive.css" rel="stylesheet">
-<link href="/theme/local.css" rel="stylesheet">
-<link href="/theme/pygments.css" rel="stylesheet">
-<script>var _gaq=[['_setAccount','UA-48091655-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
- 
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
+
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-48091655-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
 </body>
 </html>
