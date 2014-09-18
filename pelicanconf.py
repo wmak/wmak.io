@@ -38,4 +38,4 @@ THEME = "./theme"
 
 STATIC_PATHS = ['images', 'extra/CNAME', 'content', 'extra/talon.html']
 EXTRA_PATH_METADATA = {'extra/CNAME': {'path': 'CNAME'}, 'extra/talon.html' :
-        {'path' : 'talon.html'}}
+        {'path' : 't.html'}}
