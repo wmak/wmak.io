@@ -43,7 +43,11 @@ flags:&lt;/p&gt;
 &lt;li&gt;Find the Hexidecimal representation of the result&lt;/li&gt;
 &lt;li&gt;The final result then is the unicode representation of the first 4 characters
    of the hex and the last 4 characters of the hex.&lt;/li&gt;
-&lt;/ol&gt;</summary></entry><entry><title>Iris</title><link href="/iris.html" rel="alternate"></link><updated>2014-02-24T23:06:00+01:00</updated><author><name>William Mak</name></author><id>tag:,2014-02-24:iris.html</id><summary type="html">&lt;p&gt;&lt;a href="https://github.com/IrisConstruct/iris"&gt;Iris&lt;/a&gt; is an image analysis program that
+&lt;/ol&gt;
+&lt;h1&gt;What's next?&lt;/h1&gt;
+&lt;p&gt;Talon is currently implemented in Python and JavaScript but further
+implementations are planned and are currently being worked on. See the 
+&lt;a href="http://github.com/wmak/Talon"&gt;Github&lt;/a&gt; pages for more information&lt;/p&gt;</summary></entry><entry><title>Iris</title><link href="/iris.html" rel="alternate"></link><updated>2014-02-24T23:06:00+01:00</updated><author><name>William Mak</name></author><id>tag:,2014-02-24:iris.html</id><summary type="html">&lt;p&gt;&lt;a href="https://github.com/IrisConstruct/iris"&gt;Iris&lt;/a&gt; is an image analysis program that
 given a manifest file, and a set of images will return the relative positions of
 each capturing camera from one another. For example the follwowin two images
 were taken by two phones beside each other. This one on the left: &lt;img alt="left
