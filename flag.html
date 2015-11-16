@@ -15,8 +15,8 @@
 </body>
 
 
-<script type="text/javascript" src="js/jQuery.js"></script>
-<script type="text/javascript" src="js/angular.js"></script>
+<script type="text/javascript" src="extra/flags/js/jQuery.js"></script>
+<script type="text/javascript" src="extra/flags/js/angular.js"></script>
 <script>
 flagApp = angular.module("flagApp", [])
 	.controller("MainCtrl", ["$scope",
@@ -37,7 +37,7 @@ function MainCtrl($scope){
 	];
 	$scope.current_overlay = function(overlay){
 		overlay_image = new Image();
-		overlay_image.src = "images/" + overlay + ".png";
+		overlay_image.src = "extra/flags/images/" + overlay + ".png";
 		context.globalAlpha = 1;
 		context.drawImage($scope.image, 0, 0);
 		overlay_image.onload = function(){
