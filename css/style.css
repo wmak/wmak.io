@@ -1,0 +1,19 @@
+body {
+	margin: 0;
+	overflow: hidden;
+}
+#map-canvas { 
+	height: 100%; 
+	margin: 0;
+	margin-bottom: -42px;
+	overflow: auto;
+	padding: 0;
+}
+
+#talon-tag {
+	left: -50%;
+	width: 400px;
+	font-size: 150%;
+	text-align: center;
+	position: relative;
+}
