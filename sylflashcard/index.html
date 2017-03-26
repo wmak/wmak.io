@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<head>
+	<title>TOP SECRET</title>
+	<style type="text/css">
+		#list button {
+			display:block
+		}
+	</style>	
+</head>
+<body>
+	<button onclick="choose()">Next</button>
+	<button id="show" onclick="show()">Show</button>
+	<button onclick="forget()">Forget</button>
+	<h1 id="word">Hi :)</h1>
+	<h2 id="definition" style="display: none"></h2>
+	<div id="list" style="float: right">
+	</div>
+	<script type="text/javascript">
+		var i=0;
+		var items=[
+			['Crunchy', 'Lime'], 
+			['Skies', 'Sput'],
+			['Thing', 'Stuff'],
+			['Hi', ':)'],
+		];
+		terms();
+		function terms(){
+			words = localStorage.getItem('terms');
+			if (words === null){
+				words = [];
+			} else {
+				words = JSON.parse(words);
+			}
+			for (var i in words){
+				create_button(words[i]);
+			}
+		}
+		function choose(){
+			var i = Math.floor(Math.random()*items.length);
+			document.getElementById("word").innerHTML = items[i][0];
+			document.getElementById("definition").innerHTML = items[i][1];
+			document.getElementById("definition").setAttribute('style', 'display: none');
+			document.getElementById("show").setAttribute('style', '');
+		}
+		function show(){
+			document.getElementById("show").setAttribute('style', 'display: none');
+			document.getElementById("definition").setAttribute('style', '');
+		}
+		function forget(){
+			var term = document.getElementById("word").innerHTML
+			create_button(term);
+			words.push(term);
+			localStorage.setItem('terms', JSON.stringify(words));
+		}
+		function create_button(term){
+			var el = document.createElement('button');
+			el.innerHTML = term
+			el.setAttribute('onclick', 'del(' + i + ')');
+			el.setAttribute('id', 'list-' + i);
+			i = i + 1;
+			document.getElementById("list").appendChild(el);
+		}
+		function del(e){
+			words.splice(words.indexOf(document.getElementById('list-' + e).innerHTML), 1);
+			document.getElementById('list-' + e).remove();
+			localStorage.setItem('terms', JSON.stringify(words));
+		}
+		choose();
+	</script>
+</body>
