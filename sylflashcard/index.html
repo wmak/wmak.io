@@ -3,6 +3,7 @@
 	<title>TOP SECRET</title>
 </head>
 <body>
+	<span id="count"></span>/<span id="total"></span>
 	<div style="position: absolute; left:40%; top:40%">
 		<div>
 			<h1 id="word">Hi :)</h1>
@@ -410,6 +411,7 @@
 			["Syllabus", "(n) outline of subjects in a course of study/teaching"],
 			["Synopsis", "(n) brief summary/general survey of something"]
 		];
+		var duplicates = [];
 		terms();
 		function terms(){
 			words = localStorage.getItem('terms');
@@ -423,9 +425,16 @@
 			}
 		}
 		function choose(){
-			var i = Math.floor(Math.random()*items.length);
-			document.getElementById("word").innerHTML = items[i][0];
-			document.getElementById("definition").innerHTML = items[i][1];
+			if (duplicates.length == 0){
+				duplicates = items.slice(0);
+			}
+			var dup_len = duplicates.length;
+			var i = Math.floor(Math.random()*dup_len);
+			document.getElementById("word").innerHTML = duplicates[i][0];
+			document.getElementById("definition").innerHTML = duplicates[i][1];
+			duplicates.splice(i, 1);
+			document.getElementById("count").innerHTML = dup_len;
+			document.getElementById("total").innerHTML = items.length;
 			document.getElementById("definition").setAttribute('style', 'opacity: 0');
 			document.getElementById("show").setAttribute('style', '');
 		}
