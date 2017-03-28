@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <head>
 	<title>TOP SECRET</title>
-	<style type="text/css">
-		#list button {
-			display:block
-		}
-	</style>	
 </head>
 <body>
-	<button onclick="choose()">Next</button>
-	<button id="show" onclick="show()">Show</button>
-	<button onclick="forget()">Forget</button>
-	<h1 id="word">Hi :)</h1>
-	<h2 id="definition" style="display: none"></h2>
-	<div id="list" style="float: right">
+	<div style="position: absolute; left:40%; top:40%">
+		<div>
+			<h1 id="word">Hi :)</h1>
+			<h2 id="definition" style="opacity: 0"></h2>
+		</div>
+		<button onclick="choose()">Next</button>
+		<button id="show" onclick="show()">Show</button>
+		<button onclick="forget()">Forget</button>
+	</div>
+	<div id="list" style="position: absolute; bottom:33%">
 	</div>
 	<script type="text/javascript">
 		var i=0;
@@ -427,7 +426,7 @@
 			var i = Math.floor(Math.random()*items.length);
 			document.getElementById("word").innerHTML = items[i][0];
 			document.getElementById("definition").innerHTML = items[i][1];
-			document.getElementById("definition").setAttribute('style', 'display: none');
+			document.getElementById("definition").setAttribute('style', 'opacity: 0');
 			document.getElementById("show").setAttribute('style', '');
 		}
 		function show(){
