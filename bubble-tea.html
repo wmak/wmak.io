@@ -19,7 +19,7 @@
 				<button ng-click="rotateLeft()" class="btn btn-lg" style="background-color: #ff00ff; color: white; width: 100%">Rotate Left</button>
 			</div>
 			<div class="col-md-6 col-sm-6 col-xs-6">
-				<button ng-click="rotateRight()" class="btn btn-lg" style="background-color: #00f0ff; color: white; width: 100%">Rotate Left</button>
+				<button ng-click="rotateRight()" class="btn btn-lg" style="background-color: #00f0ff; color: white; width: 100%">Rotate Right</button>
 			</div>
 		</div>
 		<br/>
@@ -68,11 +68,11 @@ function MainCtrl($scope){
 		}
 	}
 	$scope.rotateLeft = function () {
-		rotate -= 90;
+		rotate += 90;
 		set_image($("#upload")[0].files);
 	}
 	$scope.rotateRight = function () {
-		rotate += 90;
+		rotate -= 90;
 		set_image($("#upload")[0].files);
 	}
 	$scope.upload_overlay = function(){
