@@ -14,6 +14,15 @@
 			</div>
 		</div>
 		<br/>
+		<div class="row" ng-show="image_loaded">
+			<div class="col-md-6 col-sm-6 col-xs-6">
+				<button ng-click="rotateLeft()" class="btn btn-lg" style="background-color: #ff00ff; color: white; width: 100%">Rotate Left</button>
+			</div>
+			<div class="col-md-6 col-sm-6 col-xs-6">
+				<button ng-click="rotateRight()" class="btn btn-lg" style="background-color: #00f0ff; color: white; width: 100%">Rotate Left</button>
+			</div>
+		</div>
+		<br/>
 		<div class="row">
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				<input id="upload" type="file" class="hidden">
@@ -41,6 +50,7 @@ bubbleApp = angular.module("bubbleApp", [])
 	.controller("MainCtrl", ["$scope",
 			MainCtrl]);
 var canvas = document.getElementById("thecanvas");
+var rotate = 0;
 context = canvas.getContext("2d");
 
 function MainCtrl($scope){
@@ -56,6 +66,14 @@ function MainCtrl($scope){
 			context.drawImage(overlay_image, 0, 0, canvas.width, canvas.height);
 			context.restore();
 		}
+	}
+	$scope.rotateLeft = function () {
+		rotate -= 90;
+		set_image($("#upload")[0].files);
+	}
+	$scope.rotateRight = function () {
+		rotate += 90;
+		set_image($("#upload")[0].files);
 	}
 	$scope.upload_overlay = function(){
 		$("#upload-overlay").click();
@@ -92,7 +110,11 @@ function MainCtrl($scope){
 		$scope.image.onload = function(){
 			context.height = canvas.height = 500;
 			context.width = canvas.width = 500;
-			context.drawImage($scope.image, 0, 0, 500, 500);
+			context.save();
+			context.translate(250, 250);
+			context.rotate(rotate * Math.PI/180);
+			context.drawImage($scope.image, -250, -250, 500, 500);
+			context.restore();
 			context.font = 'bold 45px "comic sans MS"';
 			context.fillStyle = $("#color1").val();
 			context.textAlign = 'center';
