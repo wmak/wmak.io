@@ -3,24 +3,34 @@
 </head>
 <body ng-app="bubbleApp" ng-controller="MainCtrl">
 	<h1 style="text-align:center">Create Bubble tea masterpieces!</h1>
-	<div class="well" style="height:100%; font-size:4em">
-		<input id="color1" type="color" value="#ff0000" style="top: -1000; position: absolute">
-		<label id="color1Picker" for="color1" style="color: #ff0000">Background Color</label>
-		<br/>
-
-		<input id="color2" type="color" value="#0000ff" style="top: -1000; position: absolute">
-		<label id="color2Picker" for="color2" style="color: #0000ff">Foreground Color</label>
-
-		<input id="upload" type="file" class="hidden">
-		<br/>
-
-		<label class="btn btn-default" for="upload">Upload your file</label>
-		<br/>
-		<canvas id="thecanvas" width="520px" height="520px"></canvas><br>
-		<div ng-show="image_loaded">
-			<a download id="downloadButton" class="btn btn-default">Download your masterpiece</a>
+		<div class="row">
+			<div class="col-md-6 col-sm-6 col-xs-6">
+				<input id="color1" type="color" value="#ff0000" style="top: -1000; position: absolute">
+				<label class="btn btn-lg" id="color1Picker" for="color1" style="background-color: #ff0000; color: white; width: 100%">Background Color</label>
+			</div>
+			<div class="col-md-6 col-sm-6 col-xs-6">
+				<input id="color2" type="color" value="#0000ff" style="top: -1000; position: absolute">
+				<label class="btn btn-lg" id="color2Picker" for="color2" style="background-color: #0000ff; color: white; width: 100%">Foreground Color</label>
+			</div>
 		</div>
-	</div>
+		<br/>
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<input id="upload" type="file" class="hidden">
+				<label class="btn btn-lg" for="upload" style="width: 100%; background-color: #aaffaa">Upload your file</label>
+			</div>
+		</div>
+		<br/>
+		<div class="row" ng-show="image_loaded">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<a download id="downloadButton" class="btn btn-lg" style="width: 100%; background-color: #aaaaff">Download your masterpiece</a>
+			</div>
+		</div>
+
+		<br/>
+		<div style="position: absolute; left: 50%">
+			<canvas id="thecanvas" width="520px" height="520px" style="position: relative; left: -50%"></canvas><br>
+		</div>
 </body>
 
 
@@ -65,11 +75,11 @@ function MainCtrl($scope){
 		set_image($("#upload")[0].files);
 	});
 	$("#color1").change(function(){
-		$('#color1Picker').css('color', $('#color1').val());
+		$('#color1Picker').css('background-color', $('#color1').val());
 		set_image($("#upload")[0].files);
 	});
 	$("#color2").change(function(){
-		$('#color2Picker').css('color', $('#color2').val());
+		$('#color2Picker').css('background-color', $('#color2').val());
 		set_image($("#upload")[0].files);
 	});
 	function set_image(files){
