@@ -12,16 +12,6 @@
 	<input id="color2" type="color" value="#0000ff">
 	<label for="color1">Foreground Color</label>
 	<input id="upload" type="file">
-	<div ng-if="image_loaded">
-		<h2>Overlays:</h2>
-		<div ng-repeat="overlay in overlays | orderBy:'+'">
-			<button class="btn btn-default" ng-click="current_overlay(overlay)">{{ overlay }}</button>
-		</div>
-	</div>
-	<div ng-show="image_loaded">
-		<button class="btn btn-default" ng-click="upload_overlay()">Upload your own</button>
-		<input id="upload-overlay" type="file" style="display:none; width:0; height:0">
-	</div>
 </body>
 
 
