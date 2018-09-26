@@ -3,17 +3,22 @@
 </head>
 <body ng-app="bubbleApp" ng-controller="MainCtrl">
 	<h1 style="text-align:center">Create Bubble tea masterpieces!</h1>
-	<div class="well">
-		<input id="color1" type="color" value="#ff0000">
-		<label for="color1">Background Color</label>
+	<div class="well" style="height:100%; font-size:4em">
+		<input id="color1" type="color" value="#ff0000" style="top: -1000; position: absolute">
+		<label id="color1Picker" for="color1" style="color: #ff0000">Background Color</label>
 		<br/>
-		<input id="color2" type="color" value="#0000ff">
-		<label for="color1">Foreground Color</label>
-		<input id="upload" type="file">
+
+		<input id="color2" type="color" value="#0000ff" style="top: -1000; position: absolute">
+		<label id="color2Picker" for="color2" style="color: #0000ff">Foreground Color</label>
+
+		<input id="upload" type="file" class="hidden">
+		<br/>
+
+		<label class="btn btn-default" for="upload">Upload your file</label>
+		<br/>
 		<canvas id="thecanvas" width="520px" height="520px"></canvas><br>
-		<br/>
 		<div ng-show="image_loaded">
-			<a download id="downloadButton" class="btn btn-default">Download</a>
+			<a download id="downloadButton" class="btn btn-default">Download your masterpiece</a>
 		</div>
 	</div>
 </body>
@@ -45,15 +50,6 @@ function MainCtrl($scope){
 	$scope.upload_overlay = function(){
 		$("#upload-overlay").click();
 	}
-	canvas.ondragover = function(event){
-		event.preventDefault();
-		return false;
-	}
-	canvas.ondrop = function(event){
-		event.preventDefault();
-		var files = event.dataTransfer.files;
-		set_image(files);
-	};
 	$("#upload-overlay").change(function(){
 		overlay_files = $("#upload-overlay")[0].files;
 		new_overlay = overlay_files[overlay_files.length - 1];
@@ -69,14 +65,19 @@ function MainCtrl($scope){
 		set_image($("#upload")[0].files);
 	});
 	$("#color1").change(function(){
+		$('#color1Picker').css('color', $('#color1').val());
 		set_image($("#upload")[0].files);
 	});
 	$("#color2").change(function(){
+		$('#color2Picker').css('color', $('#color2').val());
 		set_image($("#upload")[0].files);
 	});
 	function set_image(files){
 		current = files[files.length - 1];
 		$scope.image = new Image();
+		if (current === undefined) {
+			return
+		}
 		$scope.image.src = URL.createObjectURL(current); 
 		$scope.image.onload = function(){
 			context.height = canvas.height = 500;
