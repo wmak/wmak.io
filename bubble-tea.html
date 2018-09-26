@@ -4,14 +4,18 @@
 <body ng-app="bubbleApp" ng-controller="MainCtrl">
 	<h1 style="text-align:center">Create Bubble tea masterpieces!</h1>
 	<div class="well">
+		<input id="color1" type="color" value="#ff0000">
+		<label for="color1">Background Color</label>
+		<br/>
+		<input id="color2" type="color" value="#0000ff">
+		<label for="color1">Foreground Color</label>
+		<input id="upload" type="file">
 		<canvas id="thecanvas" width="520px" height="520px"></canvas><br>
+		<br/>
+		<div ng-show="image_loaded">
+			<a download id="downloadButton" class="btn btn-default">Download</a>
+		</div>
 	</div>
-	<input id="color1" type="color" value="#ff0000">
-	<label for="color1">Background Color</label>
-	<br/>
-	<input id="color2" type="color" value="#0000ff">
-	<label for="color1">Foreground Color</label>
-	<input id="upload" type="file">
 </body>
 
 
@@ -101,6 +105,7 @@ function MainCtrl($scope){
 			context.fillText("Discord.GG/DbjMKYf", 255, 500);
 			$scope.image_loaded = true;
 			$scope.$apply();
+			document.getElementById('downloadButton').href = canvas.toDataURL('image/png');
 		}
 	}
 };
