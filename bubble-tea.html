@@ -6,6 +6,11 @@
 	<div class="well">
 		<canvas id="thecanvas" width="520px" height="520px"></canvas><br>
 	</div>
+	<input id="color1" type="color" value="#ff0000">
+	<label for="color1">Background Color</label>
+	<br/>
+	<input id="color2" type="color" value="#0000ff">
+	<label for="color1">Foreground Color</label>
 	<input id="upload" type="file">
 	<div ng-if="image_loaded">
 		<h2>Overlays:</h2>
@@ -69,6 +74,12 @@ function MainCtrl($scope){
 	$("#upload").change(function(){
 		set_image($("#upload")[0].files);
 	});
+	$("#color1").change(function(){
+		set_image($("#upload")[0].files);
+	});
+	$("#color2").change(function(){
+		set_image($("#upload")[0].files);
+	});
 	function set_image(files){
 		current = files[files.length - 1];
 		$scope.image = new Image();
@@ -78,7 +89,7 @@ function MainCtrl($scope){
 			context.width = canvas.width = 500;
 			context.drawImage($scope.image, 0, 0, 500, 500);
 			context.font = 'bold 45px "comic sans MS"';
-			context.fillStyle = 'red';
+			context.fillStyle = $("#color1").val();
 			context.textAlign = 'center';
 			context.textBaseline = 'top';
 			context.fillText("Join BubbleTea", 250, 0);
@@ -89,7 +100,7 @@ function MainCtrl($scope){
 			context.fillText("Semi Casual", 250, 450);
 			context.fillText("Discord.GG/DbjMKYf", 250, 500);
 			context.font = 'bold 45px "comic sans MS"';
-			context.fillStyle = 'blue';
+			context.fillStyle = $("#color2").val();
 			context.textBaseline = 'top';
 			context.fillText("Join BubbleTea", 255, 0);
 			context.textBaseline = 'bottom';
