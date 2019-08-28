@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>resume</title>
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <style type="text/css">
+  /*
+   * Copyright 2013 Christophe-Marie Duquesne <chmd@chmd.fr>
+   *
+   * CSS for making a resume with pandoc. Inspired by moderncv.
+   *
+   * This CSS document is delivered to you under the CC BY-SA 3.0 License.
+   * https://creativecommons.org/licenses/by-sa/3.0/deed.en_US
+   */
+  
+  /* Whole document */
+  body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 9pt;
+      max-width: 800px;
+      margin: auto;
+      background: #FFFFFF;
+      padding: 10px 10px 10px 10px;
+  }
+  
+  /* Title of the resume */
+  h1 {
+      font-size: 55px;
+      color: #757575;
+      text-align:center;
+      margin-bottom:15px;
+  }
+  
+  /* Titles of categories */
+  h2 {
+      /* This is called "sectioncolor" in the ConTeXt stylesheet. */
+      color: #FF9D00;
+  }
+  /* There is a bar just before each category */
+  h2:after {
+      content: "";
+      display: inline-block;
+      margin-left:1%;
+      width: 16%;
+      height: 10px;
+      /* This is called "rulecolor" in the ConTeXt stylesheet. */
+      background-color: #DE9F3A;
+  }
+  
+  /* Definitions */
+  dt {
+      float: left;
+      clear: left;
+      width: 17%;
+      /*font-weight: bold;*/
+  }
+  dd {
+      margin-left: 17%;
+  }
+  p {
+      margin-top:0;
+      margin-bottom:7px;
+  }
+  
+  /* Blockquotes */
+  blockquote {
+      text-align: center
+  }
+  
+  /* Links */
+  a {
+      text-decoration: none;
+      color: #FF9D00;
+  }
+  a:hover, a:active {
+      background-color: #FF9D00;
+      color: #FFFFFF;
+      text-decoration: none;
+      text-shadow: 1px 1px 1px #333;
+  }
+  
+  /* Horizontal separators */
+  hr {
+      color: #A6A6A6;
+  }
+  
+  table {
+      width: 100%;
+  }
+  </style>
+</head>
+<body>
+<h1 id="william-mak">William Mak</h1>
+<h2 id="experience">Experience</h2>
+<dl>
+<dt>2016 - present</dt>
+<dd><img src="gicon.png" title="GAdventures Icon" width="16" height="16" alt="gicon" /> <strong>Intermediate Software Developer at <a href="https://www.gadventures.com/" target="_blank">GAdventures</a></strong>
+</dd>
+</dl>
+<p>Developed and maintained the software and systems for our internal tour leader website. This included applications for scheduling tour leaders, payments, and money requests.</p>
+<p><strong>Technologies</strong>: Python, Django, JavaScript, jQuery, CircleCI, Travis, AWS, ECS, PostgreSQL</p>
+<ul>
+<li>Built a system to interact with multiple RESTful APIs via webhooks to load a system with translations</li>
+<li>Worked with stakeholders to create a portal for our tour suppliers to see upcoming activities and transports</li>
+<li>Integrated our systems with the Single Sign-On provider Okta, allowing users to sign-in with a single click</li>
+<li>Improved models dependent on validities to use a single column improving data retrieval from 150ms down to 2ms</li>
+<li>Enhanced our developer experience using Ansible to help developers set up their environments with a single command</li>
+<li>Improved testing times from 500s to 40s by adding parallel testing, isolating tests and removing calls to external systems</li>
+<li>Worked with our DevOps team to replace our on-premises servers with AWS
+<ul>
+<li>Set up Docker for a Django Application along with Celery Workers</li>
+<li>Configured CircleCI for continuous integration of our changes</li>
+</ul></li>
+<li>Developed tools to help improve the developer experience
+<ul>
+<li>Added Slack notifications to developers on finished deploys</li>
+<li>Created support tools for common data issues</li>
+</ul></li>
+</ul>
+<dl>
+<dt>2015 - 2016</dt>
+<dd><img src="micon.jpg" title="MRI Icon" width="16" height="16" alt="micon" /> <strong>Software Developer at <a href="http://www.mediaresources.com/" target="_blank">Media Resources</a></strong>
+</dd>
+</dl>
+<p>Developed a web portal to display diagnostics on a company’s digital billboards.</p>
+<p><strong>Technologies</strong>: JavaScript, Angular, Jenkins, Linode</p>
+<ul>
+<li>Created an application allowing users to layout any number of webcams on a page</li>
+<li>Gave users a responsive live visual representation of billboards using PaperJS</li>
+<li>Produced a method that enabled user customization of schedules through a step chart created through Highcharts</li>
+<li>Set up, configured and maintained a Jenkins instance to automate development and production releases</li>
+<li>Migrated our automation suite to Gitlab as to provide overseas developers continuous access to servers</li>
+</ul>
+<h2 id="projects">Projects</h2>
+<dl>
+<dt>2017 - present</dt>
+<dd><img src="sicon.png" title="StageKeep Icon" width="16" height="16" alt="sicon" /> <strong>Co-Creator of <a href="https://stagekeep.com/" target="_blank">StageKeep</a></strong>
+</dd>
+</dl>
+<p>Designed, developed and maintained an application with a small team to help users manage dancer formations matched to music.</p>
+<p><strong>Technologies</strong>: C#, Unity, Python, Django, JavaScript, React, AWS, EC2</p>
+<ul>
+<li>Created a cross-platform application using Unity</li>
+<li>Implemented a Django backend to store user data</li>
+<li>Configured the system in AWS using EC2 and RDS</li>
+<li>Improved the application through user testing and getting feedback from users</li>
+<li>Used coverage.py and CircleCI to get automated testing and code coverage reporting</li>
+</ul>
+<h2 id="info">Info</h2>
+<dl>
+<dt>Education</dt>
+<dd>Honours BSc, University of Toronto, Computer Science
+</dd>
+<dt>Github</dt>
+<dd><a href="https://www.github.com/wmak/" target="_blank">wmak</a>
+</dd>
+</dl>
+<hr />
+<blockquote>
+<p><a href="mailto:william@wmak.io" class="email">william@wmak.io</a> • Toronto, Ontario</p>
+</blockquote>
+</body>
+</html>
