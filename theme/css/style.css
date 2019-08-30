@@ -42,6 +42,14 @@ body {
     font-size: 6pt;
 }
 
+.img-icon {
+    height: 43px;
+}
+
+.fa-lg {
+    font-size: 3em;
+}
+
 #sidebar {
     padding-top: 0px;
     -ms-word-break: break-all;
