@@ -73,5 +73,22 @@
       })();
     </script>
     <!-- End Google Analytics Code -->
+    <script
+      src="js/bundle.min.js"
+      integrity="sha384-PWBASVWyeEeNsEw6zDTEwryGvuiH1xuxnlu/n+GOI777vnfbqyYLzqCf+najQLoi"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="js/bundle.tracing.min.js"
+      integrity="sha384-Z4qhO5iPVi3IJ9//F7/h6V6HxmpfDYFY2y7N6cYuCU4QUVfo5CcTB4hM+eNq0sQl"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      Sentry.init({
+        dsn: "https://e2fd795fe4c54c55924ef2568c2dd5da@o349958.ingest.sentry.io/5646569",
+        integrations: [new Sentry.Integrations.BrowserTracing()],
+        tracesSampleRate: 1.0,
+      });
+    </script>
   </body>
 </html>
